@@ -17,14 +17,7 @@ and [Ollama](https://ollama.com/download). The tested Python patch version is
 recorded in `.python-version`; both Python environments have dependency locks.
 Run all commands from this repository's root.
 
-Copy the original private assignment `data/` folder here:
-
-```text
-data/
-  brochures/                       # Original PDFs and supplied Markdown
-  HistoricalServices/              # Original .txt reports
-  flotation_process_data_hourly.csv # Optional
-```
+Copy the assignment `data/` folder beside this README.
 
 The public repository excludes source documents, generated document contents,
 model weights and answer traces. Synthetic tests below work without these inputs.
@@ -74,8 +67,7 @@ alternative model needs its own answer-quality check. Switching the chat model
 does not require preparing the documents again.
 
 The measured configuration used Ollama 0.40.4, Qwen3-VL 8B Instruct Q4_K_M,
-16k context and an RTX 3080 with 10 GiB VRAM. The model download is about 6.1 GB.
-CPU-only inference and minimum hardware requirements are unmeasured.
+16k context. The model download is about 6.1 GB. CPU-only inference and minimum hardware requirements are unmeasured.
 
 Stop an Ollama server started by the Windows helper with:
 
@@ -86,15 +78,11 @@ powershell -NoProfile -ExecutionPolicy Bypass -File scripts/stop-ollama.ps1
 ## Try the demonstration
 
 Enter each question in interactive chat. Use `/new` between independent cases
-when demonstrating them separately.
+when trying them separately.
 
-1. **Product:** “We have Larox pressure filters but performance drops whenever our feed grade changes”
-2. **Service:** “A customer in Chile needs 12 filter cloths replaced on a Larox PF-DS tower press. What should I budget for the service visit?”
-3. **Process:** “The customer is getting 3.1% silica and 64.5% iron in their concentrate. They think that's normal. What do you think?”
-
-If the service answer needs travel information, a realistic clarification is
-“Round-trip travel will be 8 hours.” Follow with “The customer already has the
-cloths, so leave cloth purchases out of the budget” to demonstrate updated scope.
+If the service answer needs travel information, an example clarification is “8”
+or “Round-trip travel will be 8 hours.” Follow with “The customer already has the
+cloths, so leave cloth purchases out of the budget”.
 
 Brochure answers cite source pages and withhold unsupported specifications.
 Service answers disclose historical assumptions, unpriced items and separate
@@ -103,20 +91,14 @@ establish operating targets, causes or recommended setpoints.
 
 ## Verify
 
-Run synthetic software tests without source data or a running model:
+After installing the dependencies, run the synthetic tests:
 
 ```powershell
 uv run --offline --locked python -B -m unittest discover -s tests
 ```
 
-With the original inputs, prepared store and local model, replay the three
-demonstration conversations and their follow-ups (nine turns):
+These tests cover routing, conversation state, evidence checks and calculations.
+They do not require the original data or a running LLM.
 
-```powershell
-uv run --offline --locked python -B -m metso_assistant.evaluate --cases benchmarks/regression-cases.json --case grounding-original-product-and-short-followups --case grounding-original-service-and-short-followups --case grounding-original-process-and-short-followups --output .pilot-cache/assistant/evaluation/review-01.json
-```
-
-Choose a new output filename for each replay. Omit the three `--case` options to
-run the full regression fixture. Generated answers and traces remain private in
-the ignored cache. Passing defined checks does not establish accuracy on arbitrary
-unseen questions; see [verification](docs/verification.md).
+See [verification details](docs/verification.md) for recorded results, limitations
+and instructions for replaying the demonstration with a local model.
