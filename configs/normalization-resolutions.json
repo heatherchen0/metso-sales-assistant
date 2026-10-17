@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "rules": [
+    {
+      "source_sha256": "cb4339e0d1dfdd90c24bcd372b5635808960f4d1ed7448cf4e9bf4b54c9e6b7b",
+      "page": 10,
+      "table_id": "table-01",
+      "fact_id": "6396b0589686b140e57f",
+      "conflict_fingerprint": "914f4b1895ac8d3fd909df3b22f5053238ac4accab886858e6f08fa87936eaa9",
+      "decision": "candidate",
+      "reviewer": "Codex original-page inspection",
+      "reviewed_at_utc": "2026-10-14T15:20:21.920264+00:00",
+      "reason": "Original physical page 10 and its table crop were inspected. The source H inches column agrees with the candidate. Geometry placed the leading digit in its neighboring cell. No numeric replacement supplied."
+    },
+    {
+      "source_sha256": "cb4339e0d1dfdd90c24bcd372b5635808960f4d1ed7448cf4e9bf4b54c9e6b7b",
+      "page": 10,
+      "table_id": "table-01",
+      "fact_id": "43da75c04a6be3839106",
+      "conflict_fingerprint": "ff05826c65ba7371985d082af0c07d202e2e79e6713c7144e1de9f416f6c5d31",
+      "decision": "candidate",
+      "reviewer": "Codex original-page inspection",
+      "reviewed_at_utc": "2026-10-14T15:20:21.920264+00:00",
+      "reason": "Original physical page 10 and its table crop were inspected. The source H inches column agrees with the candidate. Geometry placed the leading digit in its neighboring cell. No numeric replacement supplied."
+    },
+    {
+      "source_sha256": "cb4339e0d1dfdd90c24bcd372b5635808960f4d1ed7448cf4e9bf4b54c9e6b7b",
+      "page": 10,
+      "table_id": "table-01",
+      "fact_id": "3c85b4e19297d4fca7ac",
+      "conflict_fingerprint": "f9e812307262188b052e9c7ad5bc9e613e25c46ef2939033f7f502a733c3b244",
+      "decision": "candidate",
+      "reviewer": "Codex original-page inspection",
+      "reviewed_at_utc": "2026-10-14T15:20:21.920264+00:00",
+      "reason": "Original physical page 10 and its table crop were inspected. The source H inches column agrees with the candidate. Geometry placed the leading digit in its neighboring cell. No numeric replacement supplied."
+    },
+    {
+      "source_sha256": "cb4339e0d1dfdd90c24bcd372b5635808960f4d1ed7448cf4e9bf4b54c9e6b7b",
+      "page": 10,
+      "table_id": "table-01",
+      "fact_id": "da7404c1be1268637e11",
+      "conflict_fingerprint": "b488911c1519cb0806b89160b76d69b09a0c88f37aefbfbcfd4a792c2b5513f9",
+      "decision": "candidate",
+      "reviewer": "Codex original-page inspection",
+      "reviewed_at_utc": "2026-10-14T15:20:21.920264+00:00",
+      "reason": "Original physical page 10 and its table crop were inspected. The source H inches column agrees with the candidate. Geometry placed the leading digit in its neighboring cell. No numeric replacement supplied."
+    },
+    {
+      "source_sha256": "cb4339e0d1dfdd90c24bcd372b5635808960f4d1ed7448cf4e9bf4b54c9e6b7b",
+      "page": 10,
+      "table_id": "table-01",
+      "fact_id": "688e8d4dc725c2f43131",
+      "conflict_fingerprint": "ccfb8a9e5c0a6206f6df7e16f1ba0370e06bb0efcc7ffaf58ba8e76b95f6266a",
+      "decision": "candidate",
+      "reviewer": "Codex original-page inspection",
+      "reviewed_at_utc": "2026-10-14T15:20:21.920264+00:00",
+      "reason": "Original physical page 10 and its table crop were inspected. The source H inches column agrees with the candidate. Geometry placed the leading digit in its neighboring cell. No numeric replacement supplied."
+    },
+    {
+      "source_sha256": "cb4339e0d1dfdd90c24bcd372b5635808960f4d1ed7448cf4e9bf4b54c9e6b7b",
+      "page": 10,
+      "table_id": "table-01",
+      "fact_id": "dbae0294cb3e87674e28",
+      "conflict_fingerprint": "4909493f014bcc46916b2b8c78d1dcf671e299166185a52c6d5cd0f460b74e4f",
+      "decision": "candidate",
+      "reviewer": "Codex original-page inspection",
+      "reviewed_at_utc": "2026-10-14T15:20:21.920264+00:00",
+      "reason": "Original physical page 10 and its table crop were inspected. The source H inches column agrees with the candidate. Geometry placed the leading digit in its neighboring cell. No numeric replacement supplied."
+    },
+    {
+      "source_sha256": "cb4339e0d1dfdd90c24bcd372b5635808960f4d1ed7448cf4e9bf4b54c9e6b7b",
+      "page": 10,
+      "table_id": "table-01",
+      "fact_id": "5ab75f501ad07317948b",
+      "conflict_fingerprint": "549e60e02a5455dbb65f848ccdaa6270672ea7843f55d303486d960fe71fc9d9",
+      "decision": "candidate",
+      "reviewer": "Codex original-page inspection",
+      "reviewed_at_utc": "2026-10-14T15:20:21.920264+00:00",
+      "reason": "Original physical page 10 and its table crop were inspected. The source H inches column agrees with the candidate. Geometry placed the leading digit in its neighboring cell. No numeric replacement supplied."
+    },
+    {
+      "source_sha256": "cb4339e0d1dfdd90c24bcd372b5635808960f4d1ed7448cf4e9bf4b54c9e6b7b",
+      "page": 10,
+      "table_id": "table-01",
+      "fact_id": "459fbe83153a5efd55cd",
+      "conflict_fingerprint": "2333e67809d013ac828ff9d5293ed0e7f7b16b767ebd3cf74fa90d27c0d7eeb0",
+      "decision": "candidate",
+      "reviewer": "Codex original-page inspection",
+      "reviewed_at_utc": "2026-10-14T15:20:21.920264+00:00",
+      "reason": "Original physical page 10 and its table crop were inspected. The source H inches column agrees with the candidate. Geometry placed the leading digit in its neighboring cell. No numeric replacement supplied."
+    },
+    {
+      "source_sha256": "cb4339e0d1dfdd90c24bcd372b5635808960f4d1ed7448cf4e9bf4b54c9e6b7b",
+      "page": 10,
+      "table_id": "table-01",
+      "fact_id": "8c970058fe14cbf61ef4",
+      "conflict_fingerprint": "1b6edbabf3787b5a34b632c69f45e286e75c9c7ae2f8d2b4acc495dea945d4bc",
+      "decision": "candidate",
+      "reviewer": "Codex original-page inspection",
+      "reviewed_at_utc": "2026-10-14T15:20:21.920264+00:00",
+      "reason": "Original physical page 10 and its table crop were inspected. The source H inches column agrees with the candidate. Geometry placed the leading digit in its neighboring cell. No numeric replacement supplied."
+    },
+    {
+      "source_sha256": "cb4339e0d1dfdd90c24bcd372b5635808960f4d1ed7448cf4e9bf4b54c9e6b7b",
+      "page": 10,
+      "table_id": "table-01",
+      "fact_id": "3f0e1bcf69f3b55fda57",
+      "conflict_fingerprint": "23d6d860b655d4f4d2d5f56d6874bc3bc5c4d30cbdc045e2c3d1b499741729da",
+      "decision": "candidate",
+      "reviewer": "Codex original-page inspection",
+      "reviewed_at_utc": "2026-10-14T15:20:21.920264+00:00",
+      "reason": "Original physical page 10 and its table crop were inspected. The source H inches column agrees with the candidate. Geometry placed the leading digit in its neighboring cell. No numeric replacement supplied."
+    },
+    {
+      "source_sha256": "cb4339e0d1dfdd90c24bcd372b5635808960f4d1ed7448cf4e9bf4b54c9e6b7b",
+      "page": 10,
+      "table_id": "table-01",
+      "fact_id": "1fdec36edaccccd91a46",
+      "conflict_fingerprint": "533e099d1a0cef686d65c0086dc274afcd50353200cc2e62b7178440529c6cc8",
+      "decision": "candidate",
+      "reviewer": "Codex original-page inspection",
+      "reviewed_at_utc": "2026-10-14T15:20:21.920264+00:00",
+      "reason": "Original physical page 10 and its table crop were inspected. The source H inches column agrees with the candidate. Geometry placed the leading digit in its neighboring cell. No numeric replacement supplied."
+    },
+    {
+      "source_sha256": "cb4339e0d1dfdd90c24bcd372b5635808960f4d1ed7448cf4e9bf4b54c9e6b7b",
+      "page": 10,
+      "table_id": "table-01",
+      "fact_id": "7c9a795481ab8a4df6a7",
+      "conflict_fingerprint": "3dc76114dcb3abc03d746dfdbc4f524959478f41de18a23f9e7df2593c906ac7",
+      "decision": "candidate",
+      "reviewer": "Codex original-page inspection",
+      "reviewed_at_utc": "2026-10-14T15:20:21.920264+00:00",
+      "reason": "Original physical page 10 and its table crop were inspected. The source H inches column agrees with the candidate. Geometry placed the leading digit in its neighboring cell. No numeric replacement supplied."
+    },
+    {
+      "source_sha256": "cb4339e0d1dfdd90c24bcd372b5635808960f4d1ed7448cf4e9bf4b54c9e6b7b",
+      "page": 10,
+      "table_id": "table-01",
+      "fact_id": "42725f907700fc062f8f",
+      "conflict_fingerprint": "1fae6747509d51124c9a5f73018c11b20d5ae3b12fea5db6787b49c4b8c468a2",
+      "decision": "candidate",
+      "reviewer": "Codex original-page inspection",
+      "reviewed_at_utc": "2026-10-14T15:20:21.920264+00:00",
+      "reason": "Original physical page 10 and its table crop were inspected. The source H inches column agrees with the candidate. Geometry placed the leading digit in its neighboring cell. No numeric replacement supplied."
+    }
+  ]
+}

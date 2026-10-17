@@ -1,0 +1,11 @@
+[project]
+name = "metso-mineru-preparation"
+version = "0.1.0"
+description = "Isolated local MinerU backend for brochure preparation"
+requires-python = ">=3.11,<3.12"
+dependencies = [
+    "mineru==4.0.12",
+]
+
+[tool.uv]
+package = false

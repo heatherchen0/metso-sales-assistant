@@ -1,0 +1,2135 @@
+{
+  "schema_version": 3,
+  "purpose": "Current request grounding, service/country follow-ups and conversation-order regressions. Questions and contracts only; no private answer gold.",
+  "cases": [
+    {
+      "id": "grounding-original-product-and-short-followups",
+      "priority": 1,
+      "messages": [
+        "We have Larox pressure filters but performance drops whenever our feed grade changes",
+        "Why might that happen?",
+        "Tell me more about the optimizer you recommended."
+      ],
+      "expected_routes": [
+        "product",
+        "product",
+        "product"
+      ],
+      "allowed_statuses": [
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ]
+      ],
+      "requires_source_turns": [
+        0,
+        1,
+        2
+      ],
+      "requires_recommendation_turns": [
+        0
+      ],
+      "no_recommendation_turns": [
+        1,
+        2
+      ],
+      "required_product_tasks_by_turn": {
+        "0": [
+          "recommend"
+        ],
+        "1": [
+          "explain"
+        ],
+        "2": [
+          "describe"
+        ]
+      }
+    },
+    {
+      "id": "grounding-original-service-and-short-followups",
+      "priority": 1,
+      "messages": [
+        "A customer in Chile needs 12 filter cloths replaced on a Larox PF-DS tower press. What should I budget for the service visit?",
+        "The travel time will be 8 hours.",
+        "The customer already has the cloths, so leave cloth purchases out of the budget."
+      ],
+      "expected_routes": [
+        "service_cost",
+        "service_cost",
+        "service_cost"
+      ],
+      "allowed_statuses": [
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ]
+      ],
+      "requires_source_turns": [
+        0,
+        1,
+        2
+      ],
+      "requires_calculation_turns": [
+        0,
+        1,
+        2
+      ],
+      "requires_country_travel_turns": [
+        0,
+        1,
+        2
+      ],
+      "expected_travel_countries": [
+        "Chile",
+        "Chile",
+        "Chile"
+      ],
+      "requires_unpriced_travel_turns": [
+        0
+      ],
+      "requires_travel_range_turns": [
+        1,
+        2
+      ],
+      "must_not_claim_full_estimate_turns": [
+        0,
+        1,
+        2
+      ],
+      "expected_final_fields": {
+        "cloth_count": 12,
+        "cloths_supplied": true
+      },
+      "forbidden_charged_categories_by_turn": {
+        "2": [
+          "material"
+        ]
+      }
+    },
+    {
+      "id": "grounding-original-process-and-short-followups",
+      "priority": 1,
+      "messages": [
+        "The customer is getting 3.1% silica and 64.5% iron in their concentrate. They think that's normal. What do you think?",
+        "The new concentrate readings are 2.2% silica and 65% iron. Are they more typical?",
+        "Only the iron reading has changed to 66%. Please keep the latest silica reading."
+      ],
+      "expected_routes": [
+        "flotation",
+        "flotation",
+        "flotation"
+      ],
+      "allowed_statuses": [
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ]
+      ],
+      "requires_source_turns": [
+        0,
+        1,
+        2
+      ],
+      "requires_calculation_turns": [
+        0,
+        1,
+        2
+      ],
+      "expected_process_readings_by_turn": {
+        "0": {
+          "% Silica Concentrate": 3.1,
+          "% Iron Concentrate": 64.5
+        },
+        "1": {
+          "% Silica Concentrate": 2.2,
+          "% Iron Concentrate": 65
+        },
+        "2": {
+          "% Silica Concentrate": 2.2,
+          "% Iron Concentrate": 66
+        }
+      },
+      "requires_shared_process_population_header_turns": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "grounding-fine-particle-loss-new-need",
+      "priority": 1,
+      "messages": [
+        "We operate TankCell flotation machines. Coarse particles recover reasonably, but fine particles keep escaping into the tailings. What product or upgrade should we assess?"
+      ],
+      "expected_routes": [
+        "product"
+      ],
+      "allowed_statuses": [
+        [
+          "answered"
+        ]
+      ],
+      "requires_source_turns": [
+        0
+      ],
+      "requires_recommendation": true,
+      "required_product_tasks_by_turn": {
+        "0": [
+          "recommend"
+        ]
+      }
+    },
+    {
+      "id": "grounding-pid-level-control-new-need",
+      "priority": 1,
+      "messages": [
+        "Our flotation bank uses ordinary PID pulp-level control. Levels oscillate and changes in one cell disturb the next cell. What could Metso offer to help with level control?"
+      ],
+      "expected_routes": [
+        "product"
+      ],
+      "allowed_statuses": [
+        [
+          "answered"
+        ]
+      ],
+      "requires_source_turns": [
+        0
+      ],
+      "requires_recommendation": true,
+      "required_product_tasks_by_turn": {
+        "0": [
+          "recommend"
+        ]
+      }
+    },
+    {
+      "id": "grounding-service-to-independent-product-need",
+      "priority": 1,
+      "messages": [
+        "A customer in Chile needs 7 filter cloths replaced on a Larox PF-DS. Give separate historical labour, travel and material components for a service budget.",
+        "Separate topic, different customer: their TankCell flotation machines lose fine particles to tailings. What product could help?"
+      ],
+      "expected_routes": [
+        "service_cost",
+        "product"
+      ],
+      "allowed_statuses": [
+        [
+          "answered",
+          "clarify"
+        ],
+        [
+          "answered"
+        ]
+      ],
+      "requires_source_turns": [
+        1
+      ],
+      "requires_recommendation_turns": [
+        1
+      ],
+      "required_product_tasks_by_turn": {
+        "1": [
+          "recommend"
+        ]
+      },
+      "requires_new_request_boundary_turns": [
+        1
+      ]
+    },
+    {
+      "id": "grounding-product-to-independent-product-need",
+      "priority": 2,
+      "messages": [
+        "We have Larox pressure filters but performance drops whenever our feed grade changes. What product would you assess?",
+        "Now consider a different plant: its flotation cells have unstable pulp levels under standard PID control. Recommend something for that problem."
+      ],
+      "expected_routes": [
+        "product",
+        "product"
+      ],
+      "allowed_statuses": [
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ]
+      ],
+      "requires_source_turns": [
+        0,
+        1
+      ],
+      "requires_recommendation_turns": [
+        0,
+        1
+      ],
+      "required_product_tasks_by_turn": {
+        "0": [
+          "recommend"
+        ],
+        "1": [
+          "recommend"
+        ]
+      },
+      "requires_new_request_boundary_turns": [
+        1
+      ]
+    },
+    {
+      "id": "grounding-uncertain-travel-needs-confirmation",
+      "priority": 1,
+      "messages": [
+        "A customer in Chile needs 12 filter cloths replaced on a Larox PF-DS. Total billed travel will be between 4 and 8 hours. Give the supported historical labour, travel and material budget components.",
+        "The travel has now been confirmed: total billed travel is 6 hours."
+      ],
+      "expected_routes": [
+        "service_cost",
+        "service_cost"
+      ],
+      "allowed_statuses": [
+        [
+          "answered",
+          "clarify"
+        ],
+        [
+          "answered"
+        ]
+      ],
+      "requires_source_turns": [
+        1
+      ],
+      "requires_calculation_turns": [
+        1
+      ],
+      "requires_clarification_turns": [
+        0
+      ],
+      "requires_unpriced_travel_turns": [
+        0
+      ],
+      "requires_travel_range_turns": [
+        1
+      ],
+      "expected_travel_countries": [
+        "Chile",
+        "Chile"
+      ],
+      "forbidden_priced_duration_roles_by_turn": {
+        "0": [
+          "travel_hours"
+        ]
+      },
+      "must_not_claim_full_estimate_turns": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "grounding-compound-description-and-flow-diagram",
+      "priority": 1,
+      "messages": [
+        "Describe ColumnCell, and explain its flow diagram from the brochure. If the diagram is unavailable or unclear, say that separately from the product description."
+      ],
+      "expected_routes": [
+        "product"
+      ],
+      "allowed_statuses": [
+        [
+          "answered",
+          "partial_answer"
+        ]
+      ],
+      "requires_source_turns": [
+        0
+      ],
+      "no_recommendation_turns": [
+        0
+      ],
+      "required_product_tasks_by_turn": {
+        "0": [
+          "describe",
+          "visual"
+        ]
+      },
+      "requires_visual_evidence_or_abstention_turns": [
+        0
+      ]
+    },
+    {
+      "id": "grounding-comparison-keeps-both-products",
+      "priority": 2,
+      "messages": [
+        "Compare Filter optimizer and CellStation: what different customer problems are they intended to address?"
+      ],
+      "expected_routes": [
+        "product"
+      ],
+      "allowed_statuses": [
+        [
+          "answered"
+        ]
+      ],
+      "requires_source_turns": [
+        0
+      ],
+      "no_recommendation_turns": [
+        0
+      ],
+      "required_product_tasks_by_turn": {
+        "0": [
+          "compare"
+        ]
+      },
+      "required_product_subjects_by_turn": {
+        "0": [
+          "Filter optimizer",
+          "CellStation"
+        ]
+      }
+    },
+    {
+      "id": "grounding-unsupported-controller-rating",
+      "priority": 2,
+      "messages": [
+        "What is the CellStation controller's certified maximum ambient operating temperature rating?"
+      ],
+      "expected_routes": [
+        "product"
+      ],
+      "allowed_statuses": [
+        [
+          "insufficient_evidence"
+        ]
+      ],
+      "required_product_tasks_by_turn": {
+        "0": [
+          "specification"
+        ]
+      },
+      "no_recommendation_turns": [
+        0
+      ]
+    },
+    {
+      "id": "grounding-june-only-mean-is-not-whole-period-mean",
+      "priority": 1,
+      "messages": [
+        "Use only June observations from the process CSV. What is the mean concentrate silica for that month?"
+      ],
+      "expected_routes": [
+        "flotation"
+      ],
+      "allowed_statuses": [
+        [
+          "insufficient_evidence"
+        ]
+      ],
+      "required_process_unsupported_kinds_by_turn": {
+        "0": [
+          "unsupported_time_scope"
+        ]
+      },
+      "requires_no_process_calculation_turns": [
+        0
+      ]
+    },
+    {
+      "id": "grounding-ninetieth-percentile-is-not-quartiles",
+      "priority": 1,
+      "messages": [
+        "What is the 90th percentile of concentrate silica in the historical process CSV?"
+      ],
+      "expected_routes": [
+        "flotation"
+      ],
+      "allowed_statuses": [
+        [
+          "insufficient_evidence"
+        ]
+      ],
+      "required_process_unsupported_kinds_by_turn": {
+        "0": [
+          "unsupported_statistic"
+        ]
+      },
+      "requires_no_process_calculation_turns": [
+        0
+      ]
+    },
+    {
+      "id": "grounding-process-period-population-and-gaps",
+      "priority": 2,
+      "messages": [
+        "What date range does the process CSV cover, how many valid hourly observations are recorded, and are there any missing-hour gaps?"
+      ],
+      "expected_routes": [
+        "flotation"
+      ],
+      "allowed_statuses": [
+        [
+          "answered"
+        ]
+      ],
+      "requires_source_turns": [
+        0
+      ],
+      "required_process_description_sections_by_turn": {
+        "0": [
+          "coverage",
+          "gaps"
+        ]
+      }
+    },
+    {
+      "id": "grounding-reversed-process-labels-and-partial-update",
+      "priority": 2,
+      "messages": [
+        "Concentrate iron is 2.2% and concentrate silica is 65%. Are these readings typical? Please keep each number attached to its stated measurement.",
+        "Correction: concentrate iron is 66% and concentrate silica is 1.8%. Reassess those readings.",
+        "Only silica has now changed to 2.5%. Iron remains at its latest value."
+      ],
+      "expected_routes": [
+        "flotation",
+        "flotation",
+        "flotation"
+      ],
+      "allowed_statuses": [
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ]
+      ],
+      "requires_source_turns": [
+        0,
+        1,
+        2
+      ],
+      "requires_calculation_turns": [
+        0,
+        1,
+        2
+      ],
+      "expected_process_readings_by_turn": {
+        "0": {
+          "% Iron Concentrate": 2.2,
+          "% Silica Concentrate": 65
+        },
+        "1": {
+          "% Iron Concentrate": 66,
+          "% Silica Concentrate": 1.8
+        },
+        "2": {
+          "% Iron Concentrate": 66,
+          "% Silica Concentrate": 2.5
+        }
+      },
+      "requires_shared_process_population_header_turns": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "demo-product-and-explanation",
+      "priority": 1,
+      "messages": [
+        "We have Larox pressure filters but performance drops whenever our feed grade changes",
+        "Why could that happen?"
+      ],
+      "expected_routes": [
+        "product",
+        "product"
+      ],
+      "allowed_statuses": [
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ]
+      ],
+      "requires_source_turns": [
+        0,
+        1
+      ],
+      "no_recommendation_turns": [
+        1
+      ]
+    },
+    {
+      "id": "demo-service-travel-followup",
+      "priority": 1,
+      "messages": [
+        "A customer in Chile needs 12 filter cloths replaced on a Larox PF-DS tower press. What should I budget for the service visit?",
+        "The travel time will be 8 hours."
+      ],
+      "expected_routes": [
+        "service_cost",
+        "service_cost"
+      ],
+      "allowed_statuses": [
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ]
+      ],
+      "requires_source_turns": [
+        0,
+        1
+      ],
+      "requires_calculation_turns": [
+        0,
+        1
+      ],
+      "must_not_claim_full_estimate_turns": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "demo-process-replaced-and-reordered-readings",
+      "priority": 1,
+      "messages": [
+        "The customer is getting 3.1% silica and 64.5% iron in their concentrate. They think that's normal. What do you think?",
+        "The customer is getting 2.2% silica and 65% iron in their concentrate. They think that's normal. What do you think?",
+        "What if iron in the concentrate is 66% and silica is 1.4%?"
+      ],
+      "expected_routes": [
+        "flotation",
+        "flotation",
+        "flotation"
+      ],
+      "allowed_statuses": [
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ]
+      ],
+      "requires_source_turns": [
+        0,
+        1,
+        2
+      ],
+      "requires_calculation_turns": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "service-ambiguous-duration-and-confirmation",
+      "priority": 2,
+      "messages": [
+        "A customer in Chile needs 12 filter cloths replaced on a Larox PF-DS tower press. Travel time will be 8 hours. What should I budget?",
+        "Yes, that includes the return journey."
+      ],
+      "expected_routes": [
+        "service_cost",
+        "service_cost"
+      ],
+      "allowed_statuses": [
+        [
+          "answered",
+          "clarify"
+        ],
+        [
+          "answered"
+        ]
+      ],
+      "requires_source_turns": [
+        0,
+        1
+      ],
+      "requires_calculation_turns": [
+        1
+      ]
+    },
+    {
+      "id": "service-owned-materials-and-explicit-travel",
+      "priority": 2,
+      "messages": [
+        "A customer in Chile needs 12 filter cloths replaced on a Larox PF-DS tower press. What should I budget for the service visit?",
+        "The customer already has the cloths. Round-trip travel will be 4 hours."
+      ],
+      "expected_routes": [
+        "service_cost",
+        "service_cost"
+      ],
+      "allowed_statuses": [
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ]
+      ],
+      "requires_source_turns": [
+        0,
+        1
+      ],
+      "requires_calculation_turns": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "service-related-material-and-inspection",
+      "priority": 2,
+      "messages": [
+        "A customer in Chile needs 12 filter cloths replaced on a Larox PF-DS tower press. What should I budget for the service visit?",
+        "Also include 6 fastening clips. Total billed travel will be 8 hours.",
+        "Can you also include an inspection? Distinguish any historical task example from confirmed work for this visit."
+      ],
+      "expected_routes": [
+        "service_cost",
+        "service_cost",
+        "service_cost"
+      ],
+      "allowed_statuses": [
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ],
+        [
+          "answered",
+          "insufficient_evidence"
+        ]
+      ],
+      "requires_source_turns": [
+        0,
+        1,
+        2
+      ],
+      "requires_calculation_turns": [
+        0,
+        1
+      ],
+      "must_not_claim_full_estimate_turns": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "product-compound-alternatives-and-named-product",
+      "priority": 3,
+      "messages": [
+        "We have Larox pressure filters but performance drops whenever our feed grade changes",
+        "Tell me more about this optimizer, and do you have other recommendations?",
+        "Tell me more about ColumnCell."
+      ],
+      "expected_routes": [
+        "product",
+        "product",
+        "product"
+      ],
+      "allowed_statuses": [
+        [
+          "answered"
+        ],
+        [
+          "answered",
+          "insufficient_evidence"
+        ],
+        [
+          "answered"
+        ]
+      ],
+      "requires_source_turns": [
+        0,
+        1,
+        2
+      ],
+      "no_recommendation_turns": [
+        2
+      ]
+    },
+    {
+      "id": "product-implicit-alternatives",
+      "priority": 3,
+      "messages": [
+        "We have Larox pressure filters but performance drops whenever our feed grade changes",
+        "Do you have other recommendations?"
+      ],
+      "expected_routes": [
+        "product",
+        "product"
+      ],
+      "allowed_statuses": [
+        [
+          "answered"
+        ],
+        [
+          "answered",
+          "insufficient_evidence"
+        ]
+      ],
+      "requires_source_turns": [
+        0
+      ]
+    },
+    {
+      "id": "process-labels-outweigh-value-magnitude",
+      "priority": 3,
+      "messages": [
+        "Concentrate iron is 2.2% and concentrate silica is 65%. Are these usual?"
+      ],
+      "expected_routes": [
+        "flotation"
+      ],
+      "allowed_statuses": [
+        [
+          "answered"
+        ]
+      ],
+      "requires_source_turns": [
+        0
+      ],
+      "requires_calculation_turns": [
+        0
+      ]
+    },
+    {
+      "id": "different-components-and-quantity-update",
+      "priority": 3,
+      "messages": [
+        "A customer in Chile needs 5 Filter Optimizer Controller units replaced on a Filter Optimizer Control System. What should I budget?",
+        "Also include 3 Ethernet cables. Give the material subtotal separately."
+      ],
+      "expected_routes": [
+        "service_cost",
+        "service_cost"
+      ],
+      "allowed_statuses": [
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ]
+      ],
+      "requires_source_turns": [
+        0,
+        1
+      ],
+      "requires_calculation_turns": [
+        0,
+        1
+      ],
+      "must_not_claim_full_estimate_turns": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "topic-order-product-service-process",
+      "priority": 1,
+      "messages": [
+        "We have Larox pressure filters but performance drops whenever our feed grade changes",
+        "A customer in Chile needs 12 filter cloths replaced on a Larox PF-DS tower press. What should I budget for the service visit?",
+        "The customer is getting 3.1% silica and 64.5% iron in their concentrate. They think that's normal. What do you think?"
+      ],
+      "expected_routes": [
+        "product",
+        "service_cost",
+        "flotation"
+      ],
+      "allowed_statuses": [
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ]
+      ],
+      "requires_source_turns": [
+        0,
+        1,
+        2
+      ],
+      "requires_calculation_turns": [
+        1,
+        2
+      ],
+      "requires_new_request_boundary_turns": [
+        0,
+        1,
+        2
+      ],
+      "requires_recommendation_turns": [
+        0
+      ],
+      "required_product_tasks_by_turn": {
+        "0": [
+          "recommend"
+        ]
+      },
+      "requires_country_travel_turns": [
+        1
+      ],
+      "expected_travel_countries": [
+        null,
+        "Chile",
+        null
+      ],
+      "requires_clarification_turns": [
+        1
+      ],
+      "requires_unpriced_travel_turns": [
+        1
+      ],
+      "forbidden_priced_duration_roles_by_turn": {
+        "1": [
+          "travel_hours"
+        ]
+      },
+      "must_not_claim_full_estimate_turns": [
+        1
+      ],
+      "expected_process_readings_by_turn": {
+        "2": {
+          "% Silica Concentrate": 3.1,
+          "% Iron Concentrate": 64.5
+        }
+      }
+    },
+    {
+      "id": "topic-order-product-process-service",
+      "priority": 1,
+      "messages": [
+        "We have Larox pressure filters but performance drops whenever our feed grade changes",
+        "The customer is getting 3.1% silica and 64.5% iron in their concentrate. They think that's normal. What do you think?",
+        "A customer in Chile needs 12 filter cloths replaced on a Larox PF-DS tower press. What should I budget for the service visit?"
+      ],
+      "expected_routes": [
+        "product",
+        "flotation",
+        "service_cost"
+      ],
+      "allowed_statuses": [
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ]
+      ],
+      "requires_source_turns": [
+        0,
+        1,
+        2
+      ],
+      "requires_calculation_turns": [
+        1,
+        2
+      ],
+      "requires_new_request_boundary_turns": [
+        0,
+        1,
+        2
+      ],
+      "requires_recommendation_turns": [
+        0
+      ],
+      "required_product_tasks_by_turn": {
+        "0": [
+          "recommend"
+        ]
+      },
+      "requires_country_travel_turns": [
+        2
+      ],
+      "expected_travel_countries": [
+        null,
+        null,
+        "Chile"
+      ],
+      "requires_clarification_turns": [
+        2
+      ],
+      "requires_unpriced_travel_turns": [
+        2
+      ],
+      "forbidden_priced_duration_roles_by_turn": {
+        "2": [
+          "travel_hours"
+        ]
+      },
+      "must_not_claim_full_estimate_turns": [
+        2
+      ],
+      "expected_process_readings_by_turn": {
+        "1": {
+          "% Silica Concentrate": 3.1,
+          "% Iron Concentrate": 64.5
+        }
+      }
+    },
+    {
+      "id": "topic-order-service-product-process",
+      "priority": 1,
+      "messages": [
+        "A customer in Chile needs 12 filter cloths replaced on a Larox PF-DS tower press. What should I budget for the service visit?",
+        "We have Larox pressure filters but performance drops whenever our feed grade changes",
+        "The customer is getting 3.1% silica and 64.5% iron in their concentrate. They think that's normal. What do you think?"
+      ],
+      "expected_routes": [
+        "service_cost",
+        "product",
+        "flotation"
+      ],
+      "allowed_statuses": [
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ]
+      ],
+      "requires_source_turns": [
+        0,
+        1,
+        2
+      ],
+      "requires_calculation_turns": [
+        0,
+        2
+      ],
+      "requires_new_request_boundary_turns": [
+        0,
+        1,
+        2
+      ],
+      "requires_recommendation_turns": [
+        1
+      ],
+      "required_product_tasks_by_turn": {
+        "1": [
+          "recommend"
+        ]
+      },
+      "requires_country_travel_turns": [
+        0
+      ],
+      "expected_travel_countries": [
+        "Chile",
+        null,
+        null
+      ],
+      "requires_clarification_turns": [
+        0
+      ],
+      "requires_unpriced_travel_turns": [
+        0
+      ],
+      "forbidden_priced_duration_roles_by_turn": {
+        "0": [
+          "travel_hours"
+        ]
+      },
+      "must_not_claim_full_estimate_turns": [
+        0
+      ],
+      "expected_process_readings_by_turn": {
+        "2": {
+          "% Silica Concentrate": 3.1,
+          "% Iron Concentrate": 64.5
+        }
+      }
+    },
+    {
+      "id": "topic-order-service-process-product",
+      "priority": 1,
+      "messages": [
+        "A customer in Chile needs 12 filter cloths replaced on a Larox PF-DS tower press. What should I budget for the service visit?",
+        "The customer is getting 3.1% silica and 64.5% iron in their concentrate. They think that's normal. What do you think?",
+        "We have Larox pressure filters but performance drops whenever our feed grade changes"
+      ],
+      "expected_routes": [
+        "service_cost",
+        "flotation",
+        "product"
+      ],
+      "allowed_statuses": [
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ]
+      ],
+      "requires_source_turns": [
+        0,
+        1,
+        2
+      ],
+      "requires_calculation_turns": [
+        0,
+        1
+      ],
+      "requires_new_request_boundary_turns": [
+        0,
+        1,
+        2
+      ],
+      "requires_recommendation_turns": [
+        2
+      ],
+      "required_product_tasks_by_turn": {
+        "2": [
+          "recommend"
+        ]
+      },
+      "requires_country_travel_turns": [
+        0
+      ],
+      "expected_travel_countries": [
+        "Chile",
+        null,
+        null
+      ],
+      "requires_clarification_turns": [
+        0
+      ],
+      "requires_unpriced_travel_turns": [
+        0
+      ],
+      "forbidden_priced_duration_roles_by_turn": {
+        "0": [
+          "travel_hours"
+        ]
+      },
+      "must_not_claim_full_estimate_turns": [
+        0
+      ],
+      "expected_process_readings_by_turn": {
+        "1": {
+          "% Silica Concentrate": 3.1,
+          "% Iron Concentrate": 64.5
+        }
+      }
+    },
+    {
+      "id": "topic-order-process-product-service",
+      "priority": 1,
+      "messages": [
+        "The customer is getting 3.1% silica and 64.5% iron in their concentrate. They think that's normal. What do you think?",
+        "We have Larox pressure filters but performance drops whenever our feed grade changes",
+        "A customer in Chile needs 12 filter cloths replaced on a Larox PF-DS tower press. What should I budget for the service visit?"
+      ],
+      "expected_routes": [
+        "flotation",
+        "product",
+        "service_cost"
+      ],
+      "allowed_statuses": [
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ]
+      ],
+      "requires_source_turns": [
+        0,
+        1,
+        2
+      ],
+      "requires_calculation_turns": [
+        0,
+        2
+      ],
+      "requires_new_request_boundary_turns": [
+        0,
+        1,
+        2
+      ],
+      "requires_recommendation_turns": [
+        1
+      ],
+      "required_product_tasks_by_turn": {
+        "1": [
+          "recommend"
+        ]
+      },
+      "requires_country_travel_turns": [
+        2
+      ],
+      "expected_travel_countries": [
+        null,
+        null,
+        "Chile"
+      ],
+      "requires_clarification_turns": [
+        2
+      ],
+      "requires_unpriced_travel_turns": [
+        2
+      ],
+      "forbidden_priced_duration_roles_by_turn": {
+        "2": [
+          "travel_hours"
+        ]
+      },
+      "must_not_claim_full_estimate_turns": [
+        2
+      ],
+      "expected_process_readings_by_turn": {
+        "0": {
+          "% Silica Concentrate": 3.1,
+          "% Iron Concentrate": 64.5
+        }
+      }
+    },
+    {
+      "id": "topic-order-process-service-product",
+      "priority": 1,
+      "messages": [
+        "The customer is getting 3.1% silica and 64.5% iron in their concentrate. They think that's normal. What do you think?",
+        "A customer in Chile needs 12 filter cloths replaced on a Larox PF-DS tower press. What should I budget for the service visit?",
+        "We have Larox pressure filters but performance drops whenever our feed grade changes"
+      ],
+      "expected_routes": [
+        "flotation",
+        "service_cost",
+        "product"
+      ],
+      "allowed_statuses": [
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ]
+      ],
+      "requires_source_turns": [
+        0,
+        1,
+        2
+      ],
+      "requires_calculation_turns": [
+        0,
+        1
+      ],
+      "requires_new_request_boundary_turns": [
+        0,
+        1,
+        2
+      ],
+      "requires_recommendation_turns": [
+        2
+      ],
+      "required_product_tasks_by_turn": {
+        "2": [
+          "recommend"
+        ]
+      },
+      "requires_country_travel_turns": [
+        1
+      ],
+      "expected_travel_countries": [
+        null,
+        "Chile",
+        null
+      ],
+      "requires_clarification_turns": [
+        1
+      ],
+      "requires_unpriced_travel_turns": [
+        1
+      ],
+      "forbidden_priced_duration_roles_by_turn": {
+        "1": [
+          "travel_hours"
+        ]
+      },
+      "must_not_claim_full_estimate_turns": [
+        1
+      ],
+      "expected_process_readings_by_turn": {
+        "0": {
+          "% Silica Concentrate": 3.1,
+          "% Iron Concentrate": 64.5
+        }
+      }
+    },
+    {
+      "id": "topic-order-product-service-process-with-service-reply",
+      "priority": 1,
+      "messages": [
+        "We have Larox pressure filters but performance drops whenever our feed grade changes",
+        "A customer in Chile needs 12 filter cloths replaced on a Larox PF-DS tower press. What should I budget for the service visit?",
+        "8",
+        "The customer is getting 3.1% silica and 64.5% iron in their concentrate. They think that's normal. What do you think?"
+      ],
+      "expected_routes": [
+        "product",
+        "service_cost",
+        "service_cost",
+        "flotation"
+      ],
+      "allowed_statuses": [
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ]
+      ],
+      "requires_source_turns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "requires_calculation_turns": [
+        1,
+        2,
+        3
+      ],
+      "requires_new_request_boundary_turns": [
+        0,
+        1,
+        3
+      ],
+      "requires_recommendation_turns": [
+        0
+      ],
+      "required_product_tasks_by_turn": {
+        "0": [
+          "recommend"
+        ]
+      },
+      "requires_country_travel_turns": [
+        1,
+        2
+      ],
+      "expected_travel_countries": [
+        null,
+        "Chile",
+        "Chile",
+        null
+      ],
+      "requires_clarification_turns": [
+        1
+      ],
+      "requires_unpriced_travel_turns": [
+        1
+      ],
+      "forbidden_priced_duration_roles_by_turn": {
+        "1": [
+          "travel_hours"
+        ]
+      },
+      "must_not_claim_full_estimate_turns": [
+        1,
+        2
+      ],
+      "expected_process_readings_by_turn": {
+        "3": {
+          "% Silica Concentrate": 3.1,
+          "% Iron Concentrate": 64.5
+        }
+      },
+      "requires_travel_range_turns": [
+        2
+      ]
+    },
+    {
+      "id": "topic-order-product-process-service-with-service-reply",
+      "priority": 1,
+      "messages": [
+        "We have Larox pressure filters but performance drops whenever our feed grade changes",
+        "The customer is getting 3.1% silica and 64.5% iron in their concentrate. They think that's normal. What do you think?",
+        "A customer in Chile needs 12 filter cloths replaced on a Larox PF-DS tower press. What should I budget for the service visit?",
+        "8"
+      ],
+      "expected_routes": [
+        "product",
+        "flotation",
+        "service_cost",
+        "service_cost"
+      ],
+      "allowed_statuses": [
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ]
+      ],
+      "requires_source_turns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "requires_calculation_turns": [
+        1,
+        2,
+        3
+      ],
+      "requires_new_request_boundary_turns": [
+        0,
+        1,
+        2
+      ],
+      "requires_recommendation_turns": [
+        0
+      ],
+      "required_product_tasks_by_turn": {
+        "0": [
+          "recommend"
+        ]
+      },
+      "requires_country_travel_turns": [
+        2,
+        3
+      ],
+      "expected_travel_countries": [
+        null,
+        null,
+        "Chile",
+        "Chile"
+      ],
+      "requires_clarification_turns": [
+        2
+      ],
+      "requires_unpriced_travel_turns": [
+        2
+      ],
+      "forbidden_priced_duration_roles_by_turn": {
+        "2": [
+          "travel_hours"
+        ]
+      },
+      "must_not_claim_full_estimate_turns": [
+        2,
+        3
+      ],
+      "expected_process_readings_by_turn": {
+        "1": {
+          "% Silica Concentrate": 3.1,
+          "% Iron Concentrate": 64.5
+        }
+      },
+      "requires_travel_range_turns": [
+        3
+      ]
+    },
+    {
+      "id": "topic-order-service-product-process-with-service-reply",
+      "priority": 1,
+      "messages": [
+        "A customer in Chile needs 12 filter cloths replaced on a Larox PF-DS tower press. What should I budget for the service visit?",
+        "8",
+        "We have Larox pressure filters but performance drops whenever our feed grade changes",
+        "The customer is getting 3.1% silica and 64.5% iron in their concentrate. They think that's normal. What do you think?"
+      ],
+      "expected_routes": [
+        "service_cost",
+        "service_cost",
+        "product",
+        "flotation"
+      ],
+      "allowed_statuses": [
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ]
+      ],
+      "requires_source_turns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "requires_calculation_turns": [
+        0,
+        1,
+        3
+      ],
+      "requires_new_request_boundary_turns": [
+        0,
+        2,
+        3
+      ],
+      "requires_recommendation_turns": [
+        2
+      ],
+      "required_product_tasks_by_turn": {
+        "2": [
+          "recommend"
+        ]
+      },
+      "requires_country_travel_turns": [
+        0,
+        1
+      ],
+      "expected_travel_countries": [
+        "Chile",
+        "Chile",
+        null,
+        null
+      ],
+      "requires_clarification_turns": [
+        0
+      ],
+      "requires_unpriced_travel_turns": [
+        0
+      ],
+      "forbidden_priced_duration_roles_by_turn": {
+        "0": [
+          "travel_hours"
+        ]
+      },
+      "must_not_claim_full_estimate_turns": [
+        0,
+        1
+      ],
+      "expected_process_readings_by_turn": {
+        "3": {
+          "% Silica Concentrate": 3.1,
+          "% Iron Concentrate": 64.5
+        }
+      },
+      "requires_travel_range_turns": [
+        1
+      ]
+    },
+    {
+      "id": "topic-order-service-process-product-with-service-reply",
+      "priority": 1,
+      "messages": [
+        "A customer in Chile needs 12 filter cloths replaced on a Larox PF-DS tower press. What should I budget for the service visit?",
+        "8",
+        "The customer is getting 3.1% silica and 64.5% iron in their concentrate. They think that's normal. What do you think?",
+        "We have Larox pressure filters but performance drops whenever our feed grade changes"
+      ],
+      "expected_routes": [
+        "service_cost",
+        "service_cost",
+        "flotation",
+        "product"
+      ],
+      "allowed_statuses": [
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ]
+      ],
+      "requires_source_turns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "requires_calculation_turns": [
+        0,
+        1,
+        2
+      ],
+      "requires_new_request_boundary_turns": [
+        0,
+        2,
+        3
+      ],
+      "requires_recommendation_turns": [
+        3
+      ],
+      "required_product_tasks_by_turn": {
+        "3": [
+          "recommend"
+        ]
+      },
+      "requires_country_travel_turns": [
+        0,
+        1
+      ],
+      "expected_travel_countries": [
+        "Chile",
+        "Chile",
+        null,
+        null
+      ],
+      "requires_clarification_turns": [
+        0
+      ],
+      "requires_unpriced_travel_turns": [
+        0
+      ],
+      "forbidden_priced_duration_roles_by_turn": {
+        "0": [
+          "travel_hours"
+        ]
+      },
+      "must_not_claim_full_estimate_turns": [
+        0,
+        1
+      ],
+      "expected_process_readings_by_turn": {
+        "2": {
+          "% Silica Concentrate": 3.1,
+          "% Iron Concentrate": 64.5
+        }
+      },
+      "requires_travel_range_turns": [
+        1
+      ]
+    },
+    {
+      "id": "topic-order-process-product-service-with-service-reply",
+      "priority": 1,
+      "messages": [
+        "The customer is getting 3.1% silica and 64.5% iron in their concentrate. They think that's normal. What do you think?",
+        "We have Larox pressure filters but performance drops whenever our feed grade changes",
+        "A customer in Chile needs 12 filter cloths replaced on a Larox PF-DS tower press. What should I budget for the service visit?",
+        "8"
+      ],
+      "expected_routes": [
+        "flotation",
+        "product",
+        "service_cost",
+        "service_cost"
+      ],
+      "allowed_statuses": [
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ]
+      ],
+      "requires_source_turns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "requires_calculation_turns": [
+        0,
+        2,
+        3
+      ],
+      "requires_new_request_boundary_turns": [
+        0,
+        1,
+        2
+      ],
+      "requires_recommendation_turns": [
+        1
+      ],
+      "required_product_tasks_by_turn": {
+        "1": [
+          "recommend"
+        ]
+      },
+      "requires_country_travel_turns": [
+        2,
+        3
+      ],
+      "expected_travel_countries": [
+        null,
+        null,
+        "Chile",
+        "Chile"
+      ],
+      "requires_clarification_turns": [
+        2
+      ],
+      "requires_unpriced_travel_turns": [
+        2
+      ],
+      "forbidden_priced_duration_roles_by_turn": {
+        "2": [
+          "travel_hours"
+        ]
+      },
+      "must_not_claim_full_estimate_turns": [
+        2,
+        3
+      ],
+      "expected_process_readings_by_turn": {
+        "0": {
+          "% Silica Concentrate": 3.1,
+          "% Iron Concentrate": 64.5
+        }
+      },
+      "requires_travel_range_turns": [
+        3
+      ]
+    },
+    {
+      "id": "topic-order-process-service-product-with-service-reply",
+      "priority": 1,
+      "messages": [
+        "The customer is getting 3.1% silica and 64.5% iron in their concentrate. They think that's normal. What do you think?",
+        "A customer in Chile needs 12 filter cloths replaced on a Larox PF-DS tower press. What should I budget for the service visit?",
+        "8",
+        "We have Larox pressure filters but performance drops whenever our feed grade changes"
+      ],
+      "expected_routes": [
+        "flotation",
+        "service_cost",
+        "service_cost",
+        "product"
+      ],
+      "allowed_statuses": [
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ]
+      ],
+      "requires_source_turns": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "requires_calculation_turns": [
+        0,
+        1,
+        2
+      ],
+      "requires_new_request_boundary_turns": [
+        0,
+        1,
+        3
+      ],
+      "requires_recommendation_turns": [
+        3
+      ],
+      "required_product_tasks_by_turn": {
+        "3": [
+          "recommend"
+        ]
+      },
+      "requires_country_travel_turns": [
+        1,
+        2
+      ],
+      "expected_travel_countries": [
+        null,
+        "Chile",
+        "Chile",
+        null
+      ],
+      "requires_clarification_turns": [
+        1
+      ],
+      "requires_unpriced_travel_turns": [
+        1
+      ],
+      "forbidden_priced_duration_roles_by_turn": {
+        "1": [
+          "travel_hours"
+        ]
+      },
+      "must_not_claim_full_estimate_turns": [
+        1,
+        2
+      ],
+      "expected_process_readings_by_turn": {
+        "0": {
+          "% Silica Concentrate": 3.1,
+          "% Iron Concentrate": 64.5
+        }
+      },
+      "requires_travel_range_turns": [
+        2
+      ]
+    },
+    {
+      "id": "topic-order-tankcell-fines-to-pid-level",
+      "priority": 1,
+      "messages": [
+        "We\u2019re losing valuable particles below 20 microns to tailings in our existing TankCell circuit.",
+        "Our flotation-cell pulp levels fluctuate whenever upstream conditions change, despite PID control"
+      ],
+      "expected_routes": [
+        "product",
+        "product"
+      ],
+      "allowed_statuses": [
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ]
+      ],
+      "requires_source_turns": [
+        0,
+        1
+      ],
+      "requires_new_request_boundary_turns": [
+        0,
+        1
+      ],
+      "requires_recommendation_turns": [
+        0,
+        1
+      ],
+      "required_product_tasks_by_turn": {
+        "0": [
+          "recommend"
+        ],
+        "1": [
+          "recommend"
+        ]
+      }
+    },
+    {
+      "id": "topic-order-pid-level-to-tankcell-fines",
+      "priority": 1,
+      "messages": [
+        "Our flotation-cell pulp levels fluctuate whenever upstream conditions change, despite PID control",
+        "We\u2019re losing valuable particles below 20 microns to tailings in our existing TankCell circuit."
+      ],
+      "expected_routes": [
+        "product",
+        "product"
+      ],
+      "allowed_statuses": [
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ]
+      ],
+      "requires_source_turns": [
+        0,
+        1
+      ],
+      "requires_new_request_boundary_turns": [
+        0,
+        1
+      ],
+      "requires_recommendation_turns": [
+        0,
+        1
+      ],
+      "required_product_tasks_by_turn": {
+        "0": [
+          "recommend"
+        ],
+        "1": [
+          "recommend"
+        ]
+      }
+    },
+    {
+      "id": "country-travel-original-service-and-eight-hours",
+      "priority": 1,
+      "messages": [
+        "A customer in Chile needs 12 filter cloths replaced on a Larox PF-DS tower press. What should I budget for the service visit?",
+        "The travel time will be 8 hours."
+      ],
+      "expected_routes": [
+        "service_cost",
+        "service_cost"
+      ],
+      "allowed_statuses": [
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ]
+      ],
+      "requires_source_turns": [
+        0,
+        1
+      ],
+      "requires_calculation_turns": [
+        0,
+        1
+      ],
+      "requires_country_travel_turns": [
+        0,
+        1
+      ],
+      "expected_travel_countries": [
+        "Chile",
+        "Chile"
+      ],
+      "requires_unpriced_travel_turns": [
+        0
+      ],
+      "requires_travel_range_turns": [
+        1
+      ],
+      "must_not_claim_full_estimate_turns": [
+        0,
+        1
+      ]
+    },
+    {
+      "id": "country-travel-quantity-change-and-extra-material",
+      "priority": 1,
+      "messages": [
+        "A customer in Chile needs 12 filter cloths replaced on a Larox PF-DS tower press. Round-trip travel will be 8 hours. Give the historical labour, travel and material components separately.",
+        "Actually make that 18 filter cloths, not 12. Please distinguish estimated task labour from confirmed hours.",
+        "Also include 6 fastening clips, and keep the material subtotal separate."
+      ],
+      "expected_routes": [
+        "service_cost",
+        "service_cost",
+        "service_cost"
+      ],
+      "allowed_statuses": [
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ],
+        [
+          "answered"
+        ]
+      ],
+      "requires_source_turns": [
+        0,
+        1,
+        2
+      ],
+      "requires_calculation_turns": [
+        0,
+        1,
+        2
+      ],
+      "requires_country_travel_turns": [
+        0,
+        1,
+        2
+      ],
+      "expected_travel_countries": [
+        "Chile",
+        "Chile",
+        "Chile"
+      ],
+      "requires_travel_range_turns": [
+        0,
+        1,
+        2
+      ],
+      "must_not_claim_full_estimate_turns": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "id": "country-travel-finland-single-rate",
+      "priority": 2,
+      "messages": [
+        "A customer in Finland needs 12 filter cloths replaced on a Larox PF-DS tower press. Total billed travel will be 6 hours. Give the supported historical cost components and any important limitations."
+      ],
+      "expected_routes": [
+        "service_cost"
+      ],
+      "allowed_statuses": [
+        [
+          "answered"
+        ]
+      ],
+      "requires_source_turns": [
+        0
+      ],
+      "requires_calculation_turns": [
+        0
+      ],
+      "requires_country_travel_turns": [
+        0
+      ],
+      "expected_travel_countries": [
+        "Finland"
+      ],
+      "requires_travel_point_turns": [
+        0
+      ],
+      "must_not_claim_full_estimate_turns": [
+        0
+      ]
+    },
+    {
+      "id": "country-travel-canada-independent-of-model",
+      "priority": 2,
+      "messages": [
+        "A customer in Canada needs 2 MD600 pump impellers replaced. Round-trip travel is 4 hours. What historical material, labour and travel components can you support?"
+      ],
+      "expected_routes": [
+        "service_cost"
+      ],
+      "allowed_statuses": [
+        [
+          "answered"
+        ]
+      ],
+      "requires_source_turns": [
+        0
+      ],
+      "requires_calculation_turns": [
+        0
+      ],
+      "requires_country_travel_turns": [
+        0
+      ],
+      "expected_travel_countries": [
+        "Canada"
+      ],
+      "requires_travel_range_turns": [
+        0
+      ],
+      "must_not_claim_full_estimate_turns": [
+        0
+      ]
+    },
+    {
+      "id": "country-travel-no-eligible-south-africa-rate",
+      "priority": 2,
+      "messages": [
+        "A customer in South Africa needs 12 filter cloths replaced on a Larox PF-DS tower press. Round-trip travel is 4 hours. Give any supported historical components and identify what remains unpriced."
+      ],
+      "expected_routes": [
+        "service_cost"
+      ],
+      "allowed_statuses": [
+        [
+          "answered",
+          "insufficient_evidence"
+        ]
+      ],
+      "requires_source_turns": [
+        0
+      ],
+      "expected_travel_countries": [
+        "South Africa"
+      ],
+      "requires_unpriced_travel_turns": [
+        0
+      ],
+      "must_not_claim_full_estimate_turns": [
+        0
+      ]
+    },
+    {
+      "id": "country-travel-missing-country",
+      "priority": 2,
+      "messages": [
+        "A customer needs 12 filter cloths replaced on a Larox PF-DS tower press. Give a rough service-visit budget showing labour, billed travel and material components separately. Total billed travel is 4 hours, but I have not established the customer's country yet. Explain which costs remain unpriced."
+      ],
+      "expected_routes": [
+        "service_cost"
+      ],
+      "allowed_statuses": [
+        [
+          "answered",
+          "clarify",
+          "insufficient_evidence"
+        ]
+      ],
+      "expected_travel_countries": [
+        null
+      ],
+      "requires_unpriced_travel_turns": [
+        0
+      ],
+      "must_not_claim_full_estimate_turns": [
+        0
+      ]
+    }
+  ]
+}

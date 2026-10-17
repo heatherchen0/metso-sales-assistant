@@ -1,0 +1,12 @@
+{
+  "include": ["metso_assistant"],
+  "exclude": [".pilot-cache", ".runtime", ".venv", "environments/mineru/.venv"],
+  "pythonVersion": "3.11",
+  "typeCheckingMode": "standard",
+  "venvPath": ".",
+  "venv": ".venv",
+  "extraPaths": [
+    "environments/mineru/.venv/Lib/site-packages",
+    "environments/mineru/.venv/lib/python3.11/site-packages"
+  ]
+}
