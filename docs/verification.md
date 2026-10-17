@@ -10,9 +10,8 @@ This page records what was checked for the submission on 17 October 2026. It sep
 | Review identity audit after type fixes | Passed | All 2,443 normalized facts remained equivalent; 724 existing review decision scopes and 13 normalization resolutions were preserved. Only fingerprint identities were migrated after exact evidence comparison. |
 | Live demonstration replay | 3 conversations, 9 turns; all 3 contract cases passed | Actual local model calls and production tools were exercised for product advice, historical service estimation and process comparison, including follow-ups. |
 
-The fresh store contains **2,363 verified**, **16 ambiguous**, and **64 pending** candidate facts. Of the verified facts, 54 represent explicitly reviewed missing values. Review status records acceptance under the configured evidence rules; it is not a guarantee that every extracted fact is correct. Review preparation used AI assistance, with original source evidence retained for inspection. Ambiguous and pending numerical facts are not authorized for normal numerical answers.
-
-The live replay used `qwen3-vl:8b-instruct-q4_K_M`, keyword retrieval, and the adaptive evidence engine. The tested machine ran Windows, Python 3.11.17 and Ollama 0.40.4 with an RTX 3080 (10 GiB) and a 16,384-token context. Preparation used the locked Docling and MinerU environments and already available model assets. A clean machine download/install, CPU-only performance and other hardware were not measured.
+Numerical brochure claims use reported facts accepted under the source-bound review rules. Table review was AI-assisted; ambiguous and pending numerical facts are withheld.
+Live checks used the local Qwen3-VL configuration documented in the README, with existing dependencies and model assets. Clean-machine installation and CPU-only performance have not been tested.
 
 ## Reproduce the checks
 
